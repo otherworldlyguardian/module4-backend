@@ -19,11 +19,9 @@ gem 'puma', '~> 3.7'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
-gem 'jwt'
-gem 'whenever', :require => false
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'jwt'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
