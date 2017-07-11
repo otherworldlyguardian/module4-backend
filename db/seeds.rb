@@ -35,7 +35,7 @@ zone_arr.each do |zone|
       wind_deg: city['wind']['deg'],
       weather: city['weather'][0]['main'],
       weather_description: city['weather'][0]['description'],
-      weather_icon: city['weather'][0]['icon'],
+      weather_icon: city['weather'][0]['icon']
     )
   end
 end
