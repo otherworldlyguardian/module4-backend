@@ -14,7 +14,7 @@ module Api
         if user && user.authenticate(params[:password])
           render json: {
             username: user.username,
-            jwt: issue_token ({id: user.id})
+            jwt: issue_token({id: user.id})
           }
         else
           render json: {
