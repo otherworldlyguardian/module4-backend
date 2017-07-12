@@ -22,6 +22,7 @@ class CityUpdateJob < ApplicationJob
 
   def cities_data_update
     update_cities = HTTParty.get(@@ZONE_ARR[@@counter])['list']
+    sleep(10)
     update_cities.each do |city|
       record = City.find_by_owm_id(city['id'])
       record.update(
@@ -36,27 +37,6 @@ class CityUpdateJob < ApplicationJob
     end
     @@counter = (@@counter + 1) % 9
   end
-
-  # def update_test
-  #   a1 = Time.now
-  #   update_cities = HTTParty.get(
-  #     "#{@@ZONE_ARR[0]}"
-  #   )['list']
-  #   update_cities.each do |city|
-  #     record = City.find_by_owm_id(city['id'])
-  #     record.update(
-  #       temp: city['main']['temp'],
-  #       wind_speed: city['wind']['speed'],
-  #       wind_deg: city['wind']['deg'],
-  #       weather: city['weather'][0]['main'],
-  #       weather_description: city['weather'][0]['description'],
-  #       weather_icon: city['weather'][0]['icon'],
-  #       updated_at: DateTime.strptime("#{city['dt']}", '%s')
-  #     )
-  #   end
-  #   a2 = Time.now
-  #   puts a2 - a1
-  # end
 
   def perform(*args)
     self.cities_data_update
