@@ -32,7 +32,7 @@ class CityUpdateJob < ApplicationJob
         weather: city['weather'][0]['main'],
         weather_description: city['weather'][0]['description'],
         weather_icon: city['weather'][0]['icon'],
-        updated_at: DateTime.strptime("#{city['dt']}", '%s')
+        time: Time.at(city['dt']).strftime('%l:%M %p %Z')
       )
     end
     @@counter = (@@counter + 1) % 9
